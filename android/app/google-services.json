@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "957426397478",
+    "project_id": "app-animus",
+    "storage_bucket": "app-animus.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957426397478:android:63297a251af87cb9bc11e7",
+        "android_client_info": {
+          "package_name": "com.company.appanimus"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuFmnpWK3ehHpQeRNmy-XSE56lwBSje8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957426397478:android:87e26061d6c5a144bc11e7",
+        "android_client_info": {
+          "package_name": "com.example.animus_senai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuFmnpWK3ehHpQeRNmy-XSE56lwBSje8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
