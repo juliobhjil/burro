@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'tela_principal.dart'; // A tela principal para redirecionamento após cadastro
+import 'tela_principal.dart';
 
 class TelaCadastro extends StatefulWidget {
   const TelaCadastro({super.key});
@@ -37,12 +37,12 @@ class _TelaCadastroState extends State<TelaCadastro> {
         const SnackBar(content: Text('As senhas não correspondem')),
       );
     } else {
-      // Simulação de cadastro bem-sucedido
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Cadastro realizado com sucesso!')),
       );
       Future.delayed(const Duration(seconds: 2), () {
         Navigator.pushReplacement(
+          // ignore: use_build_context_synchronously
           context,
           MaterialPageRoute(builder: (context) => const TelaPrincipal()),
         );
@@ -55,6 +55,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cadastro'),
+        backgroundColor: Colors.orange, 
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -62,27 +63,42 @@ class _TelaCadastroState extends State<TelaCadastro> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Image.asset(
+                'lib/assets/animuslogo.jpg', 
+                height: 200,
+                width: 200,
+              ),
               const SizedBox(height: 24),
-              Container(
+              SizedBox(
                 width: 300,
                 child: TextField(
                   controller: _emailController,
                   decoration: const InputDecoration(
                     labelText: 'Email',
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black), // Borda preta
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black), // Borda preta ao focar
+                    ),
                   ),
                   keyboardType: TextInputType.emailAddress,
                 ),
               ),
               const SizedBox(height: 16),
-              Container(
+              SizedBox(
                 width: 300,
                 child: TextField(
                   controller: _senhaController,
                   obscureText: !_isSenhaVisivel,
                   decoration: InputDecoration(
                     labelText: 'Senha',
-                    border: const OutlineInputBorder(),
+                    border: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black), // Borda preta
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black), // Borda preta ao focar
+                    ),
                     suffixIcon: IconButton(
                       icon: Icon(
                         _isSenhaVisivel ? Icons.visibility : Icons.visibility_off,
@@ -97,14 +113,19 @@ class _TelaCadastroState extends State<TelaCadastro> {
                 ),
               ),
               const SizedBox(height: 16),
-              Container(
+              SizedBox(
                 width: 300,
                 child: TextField(
                   controller: _confirmarSenhaController,
                   obscureText: !_isConfirmarSenhaVisivel,
                   decoration: InputDecoration(
                     labelText: 'Confirmar Senha',
-                    border: const OutlineInputBorder(),
+                    border: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black), // Borda preta
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black), // Borda preta ao focar
+                    ),
                     suffixIcon: IconButton(
                       icon: Icon(
                         _isConfirmarSenhaVisivel ? Icons.visibility : Icons.visibility_off,
@@ -119,7 +140,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                 ),
               ),
               const SizedBox(height: 24),
-              Container(
+              SizedBox(
                 width: 300,
                 child: ElevatedButton(
                   onPressed: _cadastrar,

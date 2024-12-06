@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'tela_principal.dart'; // Tela principal após o login
-import 'telacadastro.dart'; // Tela de cadastro
-import 'package:email_validator/email_validator.dart'; // Pacote de validação de email
+import 'tela_principal.dart'; 
+import 'telacadastro.dart'; 
+import "package:email_validator/email_validator.dart"; 
 
 class TelaInicial extends StatefulWidget {
   const TelaInicial({super.key});
@@ -50,7 +50,7 @@ class _TelaInicialState extends State<TelaInicial> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login e Cadastro'),
-        backgroundColor: Colors.brown[700], // Cor da barra de navegação
+        backgroundColor: Colors.brown[700], 
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -58,11 +58,11 @@ class _TelaInicialState extends State<TelaInicial> {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                 colors: [
-                  Color(0xFFF5E3C4), // Marrom claro
-                  Color(0xFFDEB89B), // Marrom pastel
-                  Color(0xFFD4A58D), // Marrom mais intenso
+                  Color(0xFFF5E3C4), 
+                  Color(0xFFDEB89B), 
+                  Color(0xFFD4A58D), 
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -72,11 +72,20 @@ class _TelaInicialState extends State<TelaInicial> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                // Linha com os campos de entrada de email e senha
+                
+                Center(
+                  child: Image.asset(
+                    'lib/assets/animuslogo.jpg', 
+                    width: 150, 
+                    height: 150, 
+                    fit: BoxFit.contain, 
+                  ),
+                ),
+                const SizedBox(height: 24),
+               
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Campo de email
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.only(right: 8.0),
@@ -92,7 +101,6 @@ class _TelaInicialState extends State<TelaInicial> {
                         ),
                       ),
                     ),
-                    // Campo de senha
                     Expanded(
                       child: TextField(
                         controller: _senhaController,
@@ -108,12 +116,11 @@ class _TelaInicialState extends State<TelaInicial> {
                   ],
                 ),
                 const SizedBox(height: 24),
-                // Botão de login
-                Container(
+                SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.brown[700], // Use backgroundColor instead of primary
+                      backgroundColor: Colors.brown[700], 
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -123,12 +130,11 @@ class _TelaInicialState extends State<TelaInicial> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                // Botão de cadastro
-                Container(
+                SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.brown[400], // Use backgroundColor instead of primary
+                      backgroundColor: Colors.brown[400], 
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
