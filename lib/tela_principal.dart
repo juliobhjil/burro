@@ -2,7 +2,7 @@ import 'package:animus_senai/cadastrarTutor.dart';
 import 'package:animus_senai/cadastrarUsu.dart';
 import 'package:animus_senai/cadastropets.dart';
 import 'package:flutter/material.dart';
-import 'tela_inicial.dart'; 
+import 'tela_inicial.dart';
 
 class TelaPrincipal extends StatelessWidget {
   const TelaPrincipal({super.key});
@@ -12,81 +12,110 @@ class TelaPrincipal extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Bem-vindo ao Animus'),
+        backgroundColor: Colors.orangeAccent[200], // Cor suave e vibrante para o AppBar
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 150, 64, 7),
-              ),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [
+                Color(0xFFB2FF59),  // Verde suave
+                Color(0xFF81C784),  // Verde mais claro
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 150, 64, 7),
+                ),
+                child: Text(
+                  'Menu',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
                 ),
               ),
-            ),
-            ListTile(
-              title: const Text('Pets'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CadastrarPetPage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Donos'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CadastrarTutorPage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Pets Cadastrados'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const PetsCadastradosPage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Histórico Médico'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HistoricoMedicoPage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Admin'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const CadastrarUsuarioPage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Sair'),
-              onTap: () {
-                _sair(context);
-              },
-            ),
-          ],
+              ListTile(
+                title: const Text('Pets'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CadastrarPetPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Donos'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CadastrarTutorPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Pets Cadastrados'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const PetsCadastradosPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Histórico Médico'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HistoricoMedicoPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Admin'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CadastrarUsuarioPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Sair'),
+                onTap: () {
+                  _sair(context);
+                },
+              ),
+            ],
+          ),
         ),
       ),
-      body: const Center(
-        child: Text(
-          'Bem-vindo ao app Animus!',
-          style: TextStyle(fontSize: 24),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xFFB2FF59),  // Verde suave
+              Color(0xFF81C784),  // Verde mais claro
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: const Center(
+          child: Text(
+            'Bem-vindo ao app Animus!',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
     );
@@ -102,17 +131,17 @@ class TelaPrincipal extends StatelessWidget {
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); 
+                Navigator.of(context).pop();
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const TelaInicial()), 
+                  MaterialPageRoute(builder: (context) => const TelaInicial()),
                 );
               },
               child: const Text('Sim'),
             ),
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); 
+                Navigator.of(context).pop();
               },
               child: const Text('Não'),
             ),
@@ -122,11 +151,6 @@ class TelaPrincipal extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
 
 class PetsCadastradosPage extends StatelessWidget {
   const PetsCadastradosPage({super.key});
@@ -151,4 +175,3 @@ class HistoricoMedicoPage extends StatelessWidget {
     );
   }
 }
-

@@ -48,100 +48,137 @@ class _TelaInicialState extends State<TelaInicial> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login e Cadastro'),
-        backgroundColor: Colors.brown[700], 
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: Container(
+            // Novo fundo com gradiente suave inspirado em natureza
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(30),
               gradient: const LinearGradient(
                 colors: [
-                  Color(0xFFF5E3C4), 
-                  Color(0xFFDEB89B), 
-                  Color(0xFFD4A58D), 
+                  Color(0xFFB2FF59),  // Verde suave
+                  Color(0xFF81C784),  // Verde mais claro, remetendo à natureza
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
             ),
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                
                 Center(
                   child: Image.asset(
-                    'lib/assets/animuslogo.jpg', 
-                    width: 150, 
-                    height: 150, 
-                    fit: BoxFit.contain, 
+                    'lib/assets/animus.png', // Insira o caminho da sua logo aqui
+                    width: 250,  // Ajuste o tamanho da logo
+                    height: 250,
+                    fit: BoxFit.contain,
                   ),
                 ),
-                const SizedBox(height: 24),
-               
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
+                const SizedBox(height: 16), // Diminuindo o espaçamento entre a logo e o campo de email
+                // Campos de email e senha com bordas arredondadas e detalhes modernos
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Column(
+                    children: [
+                      // Campo de email
+                      SizedBox(
+                        width: 300,
                         child: TextField(
                           controller: _emailController,
                           decoration: InputDecoration(
                             labelText: 'Email',
+                            labelStyle: TextStyle(color: Colors.black54, fontSize: 16),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.black.withOpacity(0.2), width: 2),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.orangeAccent, width: 2),
                             ),
                           ),
+                          style: TextStyle(color: Colors.black, fontSize: 18),
                           keyboardType: TextInputType.emailAddress,
                         ),
                       ),
+                      const SizedBox(height: 16),
+                      // Campo de senha
+                      SizedBox(
+                        width: 300,
+                        child: TextField(
+                          controller: _senhaController,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            labelText: 'Senha',
+                            labelStyle: TextStyle(color: Colors.black54, fontSize: 16),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.black.withOpacity(0.2), width: 2),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.orangeAccent, width: 2),
+                            ),
+                          ),
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 32),
+                // Botões de Logar e Cadastrar, lado a lado, com bordas arredondadas
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Botão de login
+                    SizedBox(
+                      width: 130,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orangeAccent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          elevation: 6,
+                        ),
+                        onPressed: _login,
+                        child: const Text(
+                          'Logar',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
-                    Expanded(
-                      child: TextField(
-                        controller: _senhaController,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          labelText: 'Senha',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                    const SizedBox(width: 16), // Espaço entre os botões
+                    // Botão de cadastro
+                    SizedBox(
+                      width: 130,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.greenAccent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          elevation: 6,
+                        ),
+                        onPressed: _cadastro,
+                        child: const Text(
+                          'Cadastrar',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
                         ),
                       ),
                     ),
                   ],
-                ),
-                const SizedBox(height: 24),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.brown[700], 
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    onPressed: _login,
-                    child: const Text('Logar'),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.brown[400], 
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    onPressed: _cadastro,
-                    child: const Text('Não tem uma conta? Cadastre-se'),
-                  ),
                 ),
               ],
             ),
