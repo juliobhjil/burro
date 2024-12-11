@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'tela_principal.dart';
 
@@ -15,7 +16,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
   bool _isSenhaVisivel = false;
   bool _isConfirmarSenhaVisivel = false;
 
-  void _cadastrar() {
+  void _cadastrar() async {
     final String email = _emailController.text;
     final String senha = _senhaController.text;
     final String confirmarSenha = _confirmarSenhaController.text;
@@ -37,16 +38,29 @@ class _TelaCadastroState extends State<TelaCadastro> {
         const SnackBar(content: Text('As senhas não correspondem')),
       );
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Cadastro realizado com sucesso!')),
-      );
-      Future.delayed(const Duration(seconds: 2), () {
-        Navigator.pushReplacement(
-          // ignore: use_build_context_synchronously
-          context,
-          MaterialPageRoute(builder: (context) => const TelaPrincipal()),
+      // Salvar dados no Firestore
+      try {
+        await FirebaseFirestore.instance.collection('usuarios').add({
+          'email': email,
+          'senha': senha,  // Se você for armazenar senha, considere encriptá-la
+        });
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Cadastro realizado com sucesso!')),
         );
-      });
+
+        Future.delayed(const Duration(seconds: 2), () {
+          Navigator.pushReplacement(
+            // ignore: use_build_context_synchronously
+            context,
+            MaterialPageRoute(builder: (context) => const TelaPrincipal()),
+          );
+        });
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Erro ao cadastrar: $e')),
+        );
+      }
     }
   }
 
@@ -55,7 +69,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cadastro'),
-        backgroundColor: Colors.orange, 
+        backgroundColor: Colors.orange,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -64,7 +78,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'lib/assets/animuslogo.jpg', 
+                'lib/assets/animuslogo.jpg',
                 height: 200,
                 width: 200,
               ),
@@ -76,10 +90,10 @@ class _TelaCadastroState extends State<TelaCadastro> {
                   decoration: const InputDecoration(
                     labelText: 'Email',
                     border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black), // Borda preta
+                      borderSide: BorderSide(color: Colors.black),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black), // Borda preta ao focar
+                      borderSide: BorderSide(color: Colors.black),
                     ),
                   ),
                   keyboardType: TextInputType.emailAddress,
@@ -94,10 +108,10 @@ class _TelaCadastroState extends State<TelaCadastro> {
                   decoration: InputDecoration(
                     labelText: 'Senha',
                     border: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black), // Borda preta
+                      borderSide: BorderSide(color: Colors.black),
                     ),
                     focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black), // Borda preta ao focar
+                      borderSide: BorderSide(color: Colors.black),
                     ),
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -121,10 +135,10 @@ class _TelaCadastroState extends State<TelaCadastro> {
                   decoration: InputDecoration(
                     labelText: 'Confirmar Senha',
                     border: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black), // Borda preta
+                      borderSide: BorderSide(color: Colors.black),
                     ),
                     focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black), // Borda preta ao focar
+                      borderSide: BorderSide(color: Colors.black),
                     ),
                     suffixIcon: IconButton(
                       icon: Icon(

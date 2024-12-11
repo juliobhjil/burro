@@ -9,7 +9,6 @@ class CadastrarTutorPage extends StatefulWidget {
   State<CadastrarTutorPage> createState() => _CadastrarTutorPageState();
 }
 
-
 class _CadastrarTutorPageState extends State<CadastrarTutorPage> {
   final TextEditingController _nomeTutorController = TextEditingController();
   final TextEditingController _cpfTutorController = TextEditingController();
@@ -24,35 +23,47 @@ class _CadastrarTutorPageState extends State<CadastrarTutorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Cadastrar Tutor')),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                _buildTextField(_nomeTutorController, 'Nome do Tutor'),
-                const SizedBox(height: 16),
-                _buildTextField(_cpfTutorController, 'CPF do Tutor', isNumber: true),
-                const SizedBox(height: 16),
-                _buildTextField(_emailTutorController, 'Email', isNumber: false),
-                const SizedBox(height: 16),
-                _buildTextField(_telefoneTutorController, 'Número de Telefone', isNumber: true),
-                const SizedBox(height: 16),
-                _buildTextField(_cidadeController, 'Cidade'),
-                const SizedBox(height: 16),
-                _buildTextField(_bairroController, 'Bairro'),
-                const SizedBox(height: 16),
-                _buildTextField(_ruaController, 'Rua'),
-                const SizedBox(height: 16),
-                _buildTextField(_numeroCasaController, 'Número da Casa', isNumber: true),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: _cadastrarTutor,
-                  child: const Text('Cadastrar'),
-                ),
-              ],
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFFB2FF59), // Verde suave
+              Color(0xFF81C784), // Verde mais claro
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _buildTextField(_nomeTutorController, 'Nome do Tutor'),
+                  const SizedBox(height: 16),
+                  _buildTextField(_cpfTutorController, 'CPF do Tutor', isNumber: true),
+                  const SizedBox(height: 16),
+                  _buildTextField(_emailTutorController, 'Email', isNumber: false),
+                  const SizedBox(height: 16),
+                  _buildTextField(_telefoneTutorController, 'Número de Telefone', isNumber: true),
+                  const SizedBox(height: 16),
+                  _buildTextField(_cidadeController, 'Cidade'),
+                  const SizedBox(height: 16),
+                  _buildTextField(_bairroController, 'Bairro'),
+                  const SizedBox(height: 16),
+                  _buildTextField(_ruaController, 'Rua'),
+                  const SizedBox(height: 16),
+                  _buildTextField(_numeroCasaController, 'Número da Casa', isNumber: true),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: _cadastrarTutor,
+                    child: const Text('Cadastrar'),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -67,7 +78,13 @@ class _CadastrarTutorPageState extends State<CadastrarTutorPage> {
         controller: controller,
         decoration: InputDecoration(
           labelText: label,
-          border: const OutlineInputBorder(),
+          labelStyle: const TextStyle(color: Colors.black),
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.black),
+          ),
+          enabledBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.black),
+          ),
         ),
         keyboardType: isNumber ? TextInputType.number : TextInputType.text,
       ),

@@ -16,8 +16,8 @@ class TelaPrincipal extends StatelessWidget {
       ),
       drawer: Drawer(
         child: Container(
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
               colors: [
                 Color(0xFFB2FF59),  // Verde suave
                 Color(0xFF81C784),  // Verde mais claro
@@ -69,11 +69,11 @@ class TelaPrincipal extends StatelessWidget {
                 },
               ),
               ListTile(
-                title: const Text('Histórico Médico'),
+                title: const Text('Donos Cadastrados'),
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HistoricoMedicoPage()),
+                    MaterialPageRoute(builder: (context) => const DonosCadastradosPage()),
                   );
                 },
               ),
@@ -97,8 +97,8 @@ class TelaPrincipal extends StatelessWidget {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: const LinearGradient(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
             colors: [
               Color(0xFFB2FF59),  // Verde suave
               Color(0xFF81C784),  // Verde mais claro
@@ -164,14 +164,14 @@ class PetsCadastradosPage extends StatelessWidget {
   }
 }
 
-class HistoricoMedicoPage extends StatelessWidget {
-  const HistoricoMedicoPage({super.key});
+class DonosCadastradosPage extends StatelessWidget {
+  const DonosCadastradosPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Histórico Médico')),
-      body: const Center(child: Text('Tela com histórico médico do pet')),
+      appBar: AppBar(title: const Text('Donos Cadastrados')),
+      body: const Center(child: Text('Tela com lista de donos cadastrados')),
     );
   }
 }

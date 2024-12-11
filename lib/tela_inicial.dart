@@ -89,17 +89,17 @@ class _TelaInicialState extends State<TelaInicial> {
                           controller: _emailController,
                           decoration: InputDecoration(
                             labelText: 'Email',
-                            labelStyle: TextStyle(color: Colors.black54, fontSize: 16),
+                            labelStyle: const TextStyle(color: Colors.black54, fontSize: 16),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
                               borderSide: BorderSide(color: Colors.black.withOpacity(0.2), width: 2),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(color: Colors.orangeAccent, width: 2),
+                              borderSide: const BorderSide(color: Colors.orangeAccent, width: 2),
                             ),
                           ),
-                          style: TextStyle(color: Colors.black, fontSize: 18),
+                          style: const TextStyle(color: Colors.black, fontSize: 18),
                           keyboardType: TextInputType.emailAddress,
                         ),
                       ),
@@ -112,17 +112,17 @@ class _TelaInicialState extends State<TelaInicial> {
                           obscureText: true,
                           decoration: InputDecoration(
                             labelText: 'Senha',
-                            labelStyle: TextStyle(color: Colors.black54, fontSize: 16),
+                            labelStyle: const TextStyle(color: Colors.black54, fontSize: 16),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
                               borderSide: BorderSide(color: Colors.black.withOpacity(0.2), width: 2),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(color: Colors.orangeAccent, width: 2),
+                              borderSide: const BorderSide(color: Colors.orangeAccent, width: 2),
                             ),
                           ),
-                          style: TextStyle(color: Colors.black, fontSize: 18),
+                          style: const TextStyle(color: Colors.black, fontSize: 18),
                         ),
                       ),
                     ],
